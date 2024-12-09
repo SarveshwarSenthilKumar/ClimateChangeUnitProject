@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <title>Eco-Mobile</title>
+    </head>
+    <body style="background-color: #D3D3D3 ">
+      <div style="width: 100%; text-align: center; font-size: 6vw; color: black; margin-top: 3%; ">Eco-Mobile</div>
+      {% for car in cars %}
+      <div style="height: 20%; margin-top:10%;">
+        <div style="width: 47%; margin-left: 3%; float: left;"><img src="{{ car.pictureLink }}" style="width: 100%;"></div><div style="width: 44%; margin-right: 3%; margin-left: 3%; float: right; color: black; font-size: 3vw; height: 100%;">{{ car.vehicleName }} - {{ car.vehicleType }}<br>
+          Number of Seats: {{ car.seats }} <br>
+        Gas Mileage: {{ car.gasMileage }}/100 Kilometers<br>
+        Number Sold *in 2021*: {{ car.numberSold }}</div><div style="margin-bottom: 20%; opacity: 0;">Eco-Mobile</div
+      </div>
+      {% endfor %}
+      <div style="width: 94%; text-align: center; color: black; font-size: 3vw; margin-right: 3%; margin-left: 3%;">1 Litre of Gasoline = {{ CO2perLitre }} Kilograms of CO2 Emissions<br>
+      1 Litre of Gasoline = {{averageGasPrice}}<br><br>{% 
+if moneySavedPerYear >= "0" %} Switching would save you {{ moneySavedPerYear }}$ on gas a year on average, which equates to {{ moneySavedPerLifetime }}$ less if you own the car for 12 years (the average lifespan of a vehicle).{% else %} Switching would cost you {{ moneySavedPerYear[1:] }}$ more on gas a year on average, which equates to {{ moneySavedPerLifetime[1:] }}$ more if you own the car for 12 years (the average lifespan of a vehicle).{% endif %} <br><br> {% 
+if CO2ReducedPerYear >= "0" %}In addition to the economical benefits, switching would also reduce {{ CO2ReducedPerYear }} kilograms of Carbon Dioxide per year from being emitted into the atmosphere on average, which equates to {{ CO2ReducedPerLifetime }} less kilograms if you own the car for 12 years.{% else %}In addition to the economical drawbacks, switching would also mean that {{ CO2ReducedPerYear }} kilograms more a year of Carbon Dioxide would be emitted into the atmosphere on average, which equates to {{ CO2ReducedPerLifetime }} more kilograms if you own the car for 12 years.{% endif %} <br><br><form action="/comparison" method="GET"><button type="submit" class="btn btn-primary form-control" style="height: 10%; font-size: 3vw; margin-left: 3%; margin-right: 3%;  width: 94%; margin-top: 2%; margin-bottom: 10%; ">Compare Other Vehicles</button>
+        </form></div>
+     
+        
+      
+    </body>
+</html>
